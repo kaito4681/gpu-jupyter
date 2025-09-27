@@ -9,6 +9,7 @@ on:
         branches: [master]
     pull_request:
         branches: [master, docker-swarm]
+    workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -23,7 +24,7 @@ jobs:
 
             - name: Build Image
               run: docker build -t gpu-jupyter .build/ # will take a while
-			  
+
             - name: DockerHub Login
               uses: docker/login-action@v3
               with:
